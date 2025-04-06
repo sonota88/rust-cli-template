@@ -1,0 +1,11 @@
+require "rake/clean"
+
+CLEAN.include "app"
+
+desc "Build app"
+task :build => "app"
+
+desc "Compile app"
+file "app" => ["app.rs"] do
+  sh "../docker.sh run rustc app.rs"
+end

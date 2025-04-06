@@ -1,0 +1,15 @@
+require "rake/clean"
+
+CLEAN.include "target/"
+
+desc "Build app"
+task :build => "app"
+
+deps = []
+deps += Dir.glob("src/**/*.rs")
+deps << "Cargo.toml"
+
+desc "Compile app"
+file "app" => deps do
+  sh "../docker.sh run cargo build"
+end

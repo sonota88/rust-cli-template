@@ -1,0 +1,4 @@
+```sh
+rake build
+./app
+```
